@@ -1,16 +1,18 @@
 #include "sunbeamer.h"
 
-void SunbeamerApi::setViewport(float w, float h)
+void SunbeamEngine::setViewport(float w, float h, float distance)
 {
-    viewportDimensions = Vector2f(w, h);
+    viewportDimensions = Math::Vector2f(w, h);
+    viewportDistance = distance;
 }
 
-void SunbeamerApi::setViewport(Vector2f dimensions)
+void SunbeamEngine::setViewport(Math::Vector2f dimensions, float distance)
 {
     viewportDimensions = dimensions;
+    viewportDistance = distance;
 }
 
-void SunbeamerApi::frame(ICanvas* canvas)
+void SunbeamEngine::frame(SunbeamScene* scene, ICanvas* canvas)
 {
     
 }

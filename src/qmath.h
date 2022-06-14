@@ -1,76 +1,143 @@
 #pragma once
 
-template<typename T>
-struct Vector2
+namespace Math
 {
-    union
+    template<typename T>
+    struct Vector2
     {
-        struct 
+        union
         {
-            T x, y;
+            struct 
+            {
+                T x, y;
+            };
+
+            struct 
+            {
+                T w, h;
+            };
+            
+            struct 
+            {
+                T s, t;
+            };
         };
 
-        struct 
+        Vector2<T> operator+(Vector2<T> two)
         {
-            T w, h;
-        };
-        
-        struct 
+            Vector2<T> fin;
+            fin.x = x + two.x;
+            fin.y = y + two.y;
+
+            return fin;
+        }
+
+        Vector2<T> operator-(Vector2<T> two)
         {
-            T s, t;
-        };
+            Vector2<T> fin;
+            fin.x = x - two.x;
+            fin.y = y - two.y;
+
+            return fin;
+        }
+
+        Vector2<T> operator*(Vector2<T> two)
+        {
+            Vector2<T> fin;
+            fin.x = x * two.x;
+            fin.y = y * two.y;
+
+            return fin;
+        }
+
+        Vector2<T> operator/(Vector2<T> two)
+        {
+            Vector2<T> fin;
+            fin.x = x / two.x;
+            fin.y = y / two.y;
+
+            return fin;
+        }
+
+        bool operator==(Vector2<T> v)
+        {
+            return (v.x == x) && (v.y == y);
+        }
+
+        Vector2(T x, T y) : x(x), y(y) {}
+        Vector2(T x) : x(x), y(x) {}
+        Vector2() : x(0), y(0) {}
     };
 
-    Vector2(T x, T y) : x(x), y(y) {}
-};
-
-template<typename T>
-struct Vector3
-{
-    union
+    template<typename T>
+    struct Vector3
     {
-        struct
+        union
         {
-            T x, y, z;
+            struct
+            {
+                T x, y, z;
+            };
+
+            struct
+            {
+                T s, t, w;
+            };
         };
 
-        struct
+        Vector3<T> operator+(Vector3<T> two)
         {
-            T s, t, w;
-        };
+            Vector3<T> fin;
+            fin.x = x + two.x;
+            fin.y = y + two.y;
+            fin.z = z + two.z;
+
+            return fin;
+        }
+
+        Vector3<T> operator-(Vector3<T> two)
+        {
+            Vector3<T> fin;
+            fin.x = x - two.x;
+            fin.y = y - two.y;
+            fin.z = z - two.z;
+
+            return fin;
+        }
+
+        Vector3<T> operator*(Vector3<T> two)
+        {
+            Vector3<T> fin;
+            fin.x = x * two.x;
+            fin.y = y * two.y;
+            fin.z = z * two.z;
+
+            return fin;
+        }
+
+        Vector3<T> operator/(Vector3<T> two)
+        {
+            Vector3<T> fin;
+            fin.x = x / two.x;
+            fin.y = y / two.y;
+            fin.z = z / two.z;
+
+            return fin;
+        }
+
+        bool operator==(Vector3<T> v)
+        {
+            return (v.x == x) && (v.y == y) && (v.z == z);
+        }
+
+        Vector3(T x, T y, T z) : x(x), y(y), z(z) {}
+        Vector3(T x) : x(x), y(x), z(x) {}
+        Vector3() : x(0), y(0), z(0) {}
     };
 
-    Vector3<T> operator+(Vector3<T> one, Vector3<T> two)
-    {
-        Vector3<T> fin;
-        fin.x = one.x + two.x;
-        fin.y = one.y + two.y;
-        fin.z = one.z + two.z;
+    typedef Vector2<double> Vector2d;
+    typedef Vector3<double> Vector3d;
 
-        return fin;
-    }
-
-    Vector3<T> operator-(Vector3<T> one, Vector3<T> two)
-    {
-        Vector3<T> fin;
-        fin.x = one.x - two.x;
-        fin.y = one.y - two.y;
-        fin.z = one.z - two.z;
-
-        return fin;
-    }
-
-    bool operator==(Vector3<T> v)
-    {
-        return (v.x == x) && (v.y == y) && (v.z == z);
-    }
-
-    Vector3(T x, T y, T z) : x(x), y(y), z(z) {}
-    Vector3(T x) : x(x), y(x), z(x) {}
-};
-
-typedef Vector2<double> Vector2d;
-typedef Vector3<double> Vector3d;
-
-typedef Vector2<float> Vector2f;
-typedef Vector3<float> Vector3f;
+    typedef Vector2<float> Vector2f;
+    typedef Vector3<float> Vector3f;
+}

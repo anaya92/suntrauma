@@ -17,6 +17,7 @@ public:
     void refresh();
     bool notClosed();
 public:
+    void clearCanvas(Rgb color) override;
     void setPixel(int x, int y, Rgb color) override;
     void resizeCanvas(int w, int h) override;
 private:

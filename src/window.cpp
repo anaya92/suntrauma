@@ -75,6 +75,17 @@ bool DrawableWindow::notClosed()
     return true;
 }
 
+void DrawableWindow::clearCanvas(Rgb color)
+{
+    for (int i = 0; i < canvasWidth; i++)
+    {
+        for (int j = 0; j < canvasWidth; j++)
+        {
+            setPixel(i, j, color);
+        }
+    }
+}
+
 void DrawableWindow::setPixel(int x, int y, Rgb color)
 {
     pixels[x + y * canvasWidth] = color.toRgba8888();
